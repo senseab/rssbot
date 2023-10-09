@@ -59,7 +59,7 @@ jobs:
           context: .
           build-args: LOCALE=zh
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:zh-${{ github.ref }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:zh,${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:zh-${{ github.ref_name }}
           platforms: linux/amd64,linux/arm64
 
       # Build and push Docker image with Buildx (don't push on PR)
@@ -71,5 +71,5 @@ jobs:
           context: .
           build-args: LOCALE=en
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:en-${{ github.ref }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:en,${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:en-${{ github.ref_name }}
           platforms: linux/amd64,linux/arm64
